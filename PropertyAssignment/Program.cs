@@ -10,8 +10,6 @@ namespace PropertyAssignment
 	{
 		private const int Iterations = 10000000;
 		private const int MaximumRuns = 7;
-		private const string SetValuesDirectlyLabel = "SetValuesDirectly";
-		private const string SetValuesDirectlyViaTemporaryObjectLabel = "SetValuesDirectlyViaTemporaryObject";
 
 		static void Main(string[] args)
 		{
@@ -47,6 +45,7 @@ namespace PropertyAssignment
 
 		private static void ProfileUsingPropertyValuesFromObject()
 		{
+			Console.Out.WriteLine(typeof(Program).FullName);
 			ProgramState.CheckProgramState();
 
 			GC.Collect();
@@ -72,14 +71,14 @@ namespace PropertyAssignment
 
 			foreach (var timing in profiler.GetTimingHierarchy())
 			{
-				if (timing.Name == Program.SetValuesDirectlyLabel)
+				if (timing.Name == nameof(Program.SetValuesDirectly))
 				{
-					Console.Out.WriteLine(timing.Name + " - " + timing.DurationMilliseconds + "ms");
+					Console.Out.WriteLine($"{timing.Name} - {timing.DurationMilliseconds}ms");
 					setValuesDirectlyTotalTime += timing.DurationMilliseconds.Value;
 				}
-				else if (timing.Name == Program.SetValuesDirectlyViaTemporaryObjectLabel)
+				else if (timing.Name == nameof(Program.SetValuesDirectlyViaTemporaryObject))
 				{
-					Console.Out.WriteLine(timing.Name + " - " + timing.DurationMilliseconds + "ms");
+					Console.Out.WriteLine($"{timing.Name} - {timing.DurationMilliseconds}ms");
 					setValuesDirectlyViaTemporaryObjectTotalTime += timing.DurationMilliseconds.Value;
 				}
 			}
@@ -88,18 +87,18 @@ namespace PropertyAssignment
 
 			Console.Out.WriteLine();
 
-			Console.Out.WriteLine(SetValuesDirectlyLabel + " Total time: " +
-				setValuesDirectlyTotalTime.ToString(numberFormat) + "ms");
-			Console.Out.WriteLine(SetValuesDirectlyViaTemporaryObjectLabel + " Total time: " +
-				setValuesDirectlyViaTemporaryObjectTotalTime.ToString(numberFormat) + "ms");
+			Console.Out.WriteLine(
+				$"{nameof(Program.SetValuesDirectly)} Total time: {setValuesDirectlyTotalTime.ToString(numberFormat)}ms");
+			Console.Out.WriteLine(
+				$"{nameof(Program.SetValuesDirectlyViaTemporaryObject)} Total time: {setValuesDirectlyViaTemporaryObjectTotalTime.ToString(numberFormat)}ms");
 
-			Console.Out.WriteLine(SetValuesDirectlyLabel + " Average: " +
-				(setValuesDirectlyTotalTime / MaximumRuns).ToString(numberFormat) + "ms");
-			Console.Out.WriteLine(SetValuesDirectlyViaTemporaryObjectLabel + " Average: " +
-				(setValuesDirectlyViaTemporaryObjectTotalTime / MaximumRuns).ToString(numberFormat) + "ms");
+			Console.Out.WriteLine(
+				$"{nameof(Program.SetValuesDirectly)} Average: {(setValuesDirectlyTotalTime / MaximumRuns).ToString(numberFormat)}ms");
+			Console.Out.WriteLine(
+				$"{nameof(Program.SetValuesDirectlyViaTemporaryObject)} Average: {(setValuesDirectlyViaTemporaryObjectTotalTime / MaximumRuns).ToString(numberFormat)}ms");
 
-			Console.Out.WriteLine("Difference: " +
-				((setValuesDirectlyTotalTime - setValuesDirectlyViaTemporaryObjectTotalTime) / setValuesDirectlyViaTemporaryObjectTotalTime).ToString("#0.####%"));
+			Console.Out.WriteLine(
+				$"Difference: {((setValuesDirectlyTotalTime - setValuesDirectlyViaTemporaryObjectTotalTime) / setValuesDirectlyViaTemporaryObjectTotalTime).ToString("#0.####%")}");
 			Console.ReadLine();
 		}
 
@@ -114,7 +113,7 @@ namespace PropertyAssignment
 			{
 				if (random.NextBoolean() && setValuesDirectlyRemainingRuns < Program.MaximumRuns)
 				{
-					using (profiler.Step(Program.SetValuesDirectlyLabel))
+					using (profiler.Step(nameof(Program.SetValuesDirectly)))
 					{
 						for (var i = 0; i < Program.Iterations; i++)
 						{
@@ -126,7 +125,7 @@ namespace PropertyAssignment
 				}
 				else if (setValuesDirectlyViaTemporaryObjectRemainingRuns < Program.MaximumRuns)
 				{
-					using (profiler.Step(Program.SetValuesDirectlyViaTemporaryObjectLabel))
+					using (profiler.Step(nameof(Program.SetValuesDirectlyViaTemporaryObject)))
 					{
 						for (var i = 0; i < Program.Iterations; i++)
 						{
@@ -143,26 +142,27 @@ namespace PropertyAssignment
 		{
 			var root = new Root();
 			var child = root.Intermediate.Child;
-			child.GuidValue0 = source.Intermediate.Child.GuidValue0;
-			child.GuidValue1 = source.Intermediate.Child.GuidValue1;
-			child.GuidValue2 = source.Intermediate.Child.GuidValue2;
-			child.GuidValue3 = source.Intermediate.Child.GuidValue3;
-			child.GuidValue4 = source.Intermediate.Child.GuidValue4;
-			child.IntValue0 = source.Intermediate.Child.IntValue0;
-			child.IntValue1 = source.Intermediate.Child.IntValue1;
-			child.IntValue2 = source.Intermediate.Child.IntValue2;
-			child.IntValue3 = source.Intermediate.Child.IntValue3;
-			child.IntValue4 = source.Intermediate.Child.IntValue3;
-			child.StringValue0 = source.Intermediate.Child.StringValue0;
-			child.StringValue1 = source.Intermediate.Child.StringValue1;
-			child.StringValue2 = source.Intermediate.Child.StringValue2;
-			child.StringValue3 = source.Intermediate.Child.StringValue3;
-			child.StringValue4 = source.Intermediate.Child.StringValue4;
-			child.UriValue0 = source.Intermediate.Child.UriValue0;
-			child.UriValue1 = source.Intermediate.Child.UriValue1;
-			child.UriValue2 = source.Intermediate.Child.UriValue2;
-			child.UriValue3 = source.Intermediate.Child.UriValue3;
-			child.UriValue4 = source.Intermediate.Child.UriValue4;
+			var sourceChild = source.Intermediate.Child;
+			child.GuidValue0 = sourceChild.GuidValue0;
+			child.GuidValue1 = sourceChild.GuidValue1;
+			child.GuidValue2 = sourceChild.GuidValue2;
+			child.GuidValue3 = sourceChild.GuidValue3;
+			child.GuidValue4 = sourceChild.GuidValue4;
+			child.IntValue0 = sourceChild.IntValue0;
+			child.IntValue1 = sourceChild.IntValue1;
+			child.IntValue2 = sourceChild.IntValue2;
+			child.IntValue3 = sourceChild.IntValue3;
+			child.IntValue4 = sourceChild.IntValue3;
+			child.StringValue0 = sourceChild.StringValue0;
+			child.StringValue1 = sourceChild.StringValue1;
+			child.StringValue2 = sourceChild.StringValue2;
+			child.StringValue3 = sourceChild.StringValue3;
+			child.StringValue4 = sourceChild.StringValue4;
+			child.UriValue0 = sourceChild.UriValue0;
+			child.UriValue1 = sourceChild.UriValue1;
+			child.UriValue2 = sourceChild.UriValue2;
+			child.UriValue3 = sourceChild.UriValue3;
+			child.UriValue4 = sourceChild.UriValue4;
 		}
 
 		private static void SetValuesDirectly(Root source)

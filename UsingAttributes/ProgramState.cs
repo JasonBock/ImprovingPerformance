@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using Spackle.Extensions;
 
-namespace PropertyAssignment
+namespace UsingAttributes
 {
 	// Lifted from:
 	// https://gist.github.com/mattwarren/69070616cf0efbb68a79#file-benchmarking-cs-L344

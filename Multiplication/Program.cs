@@ -12,17 +12,18 @@ namespace Multiplication
 		static void Main(string[] args)
 		{
 			//Program.QuickTest();
+			
 			//Program.NaiveTimeTest(new BigInteger(3), new BigInteger(2));
 			//Program.NaiveTimeTest(new BigInteger(30), new BigInteger(20));
 			//Program.NaiveTimeTest(new BigInteger(3000), new BigInteger(2000));
 			//Program.NaiveTimeTest(new BigInteger(300000), new BigInteger(200000));
-			//Program.NaiveTimeTest(new BigInteger(30000000), new BigInteger(20000000));
+			Program.NaiveTimeTest(new BigInteger(30000000), new BigInteger(20000000));
 			//Program.NaiveTimeTest(new BigInteger(30000000), new BigInteger(0));
 			//Program.NaiveTimeTest(new BigInteger(0), new BigInteger(30000000));
 
-			var data = Program.Generate(50, 4);
-			Program.Execute(data, Program.MultiplyViaOperation);
-			Program.Execute(data, Program.MultiplyViaAddition);
+			//var data = Program.Generate(50, 4);
+			//Program.Execute(data, Program.MultiplyViaOperation);
+			//Program.Execute(data, Program.MultiplyViaAddition);
 		}
 
 		private static BigInteger[] Generate(int count, int maxSize)
@@ -60,7 +61,7 @@ namespace Multiplication
 				operationTime.Stop();
 			}
 
-			Console.Out.WriteLine("Execute time: {0}", operationTime.Elapsed);
+			Console.Out.WriteLine($"Execute time: {operationTime.Elapsed}");
 		}
 
 		private static void NaiveTimeTest(BigInteger a, BigInteger b)
@@ -71,8 +72,8 @@ namespace Multiplication
 
 			operationTime.Stop();
 
-			Console.Out.WriteLine("NaiveTestTime.MultiplyViaOperation({0}, {1}) time: {2}",
-				a, b, operationTime.Elapsed);
+			Console.Out.WriteLine(
+				$"NaiveTestTime.MultiplyViaOperation({a}, {b}) time: {operationTime.Elapsed}");
 
 			var additionTime = Stopwatch.StartNew();
 
@@ -80,31 +81,31 @@ namespace Multiplication
 
 			additionTime.Stop();
 
-			Console.Out.WriteLine("NaiveTestTime.MultiplyViaAddition({0}, {1}) time: {2}",
-				a, b, additionTime.Elapsed);
+			Console.Out.WriteLine(
+				$"NaiveTestTime.MultiplyViaAddition({a}, {b}) time: {additionTime.Elapsed}");
 		}
 
 		private static void QuickTest()
 		{
-			Console.Out.WriteLine("346 * 27 : MultiplyViaOperation is " +
-				Program.MultiplyViaOperation(new BigInteger(346), new BigInteger(27)));
-			Console.Out.WriteLine("346 * 27 : MultiplyViaAddition is " +
-				Program.MultiplyViaAddition(new BigInteger(346), new BigInteger(27)));
+			Console.Out.WriteLine(
+				$"346 * 27 : MultiplyViaOperation is {Program.MultiplyViaOperation(new BigInteger(346), new BigInteger(27))}");
+			Console.Out.WriteLine(
+				$"346 * 27 : MultiplyViaAddition is {Program.MultiplyViaAddition(new BigInteger(346), new BigInteger(27))}");
 
-			Console.Out.WriteLine("-346 * 27 : MultiplyViaOperation is " +
-				Program.MultiplyViaOperation(new BigInteger(-346), new BigInteger(27)));
-			Console.Out.WriteLine("-346 * 27 : MultiplyViaAddition is " +
-				Program.MultiplyViaAddition(new BigInteger(-346), new BigInteger(27)));
+			Console.Out.WriteLine(
+				$"-346 * 27 : MultiplyViaOperation is {Program.MultiplyViaOperation(new BigInteger(-346), new BigInteger(27))}");
+			Console.Out.WriteLine(
+				$"-346 * 27 : MultiplyViaAddition is {Program.MultiplyViaAddition(new BigInteger(-346), new BigInteger(27))}");
 
-			Console.Out.WriteLine("346 * 27 : MultiplyViaOperation is " +
-				Program.MultiplyViaOperation(new BigInteger(346), new BigInteger(-27)));
-			Console.Out.WriteLine("346 * -27 : MultiplyViaAddition is " +
-				Program.MultiplyViaAddition(new BigInteger(346), new BigInteger(-27)));
+			Console.Out.WriteLine(
+				$"346 * 27 : MultiplyViaOperation is {Program.MultiplyViaOperation(new BigInteger(346), new BigInteger(-27))}");
+			Console.Out.WriteLine(
+				$"346 * -27 : MultiplyViaAddition is {Program.MultiplyViaAddition(new BigInteger(346), new BigInteger(-27))}");
 
-			Console.Out.WriteLine("-346 * -27 : MultiplyViaOperation is " +
-				Program.MultiplyViaOperation(new BigInteger(-346), new BigInteger(-27)));
-			Console.Out.WriteLine("-346 * -27 : MultiplyViaAddition is " +
-				Program.MultiplyViaAddition(new BigInteger(-346), new BigInteger(-27)));
+			Console.Out.WriteLine(
+				$"-346 * -27 : MultiplyViaOperation is {Program.MultiplyViaOperation(new BigInteger(-346), new BigInteger(-27))}");
+			Console.Out.WriteLine(
+				$"-346 * -27 : MultiplyViaAddition is {Program.MultiplyViaAddition(new BigInteger(-346), new BigInteger(-27))}");
 		}
 
 		private static BigInteger MultiplyViaOperation(BigInteger a, BigInteger b)
