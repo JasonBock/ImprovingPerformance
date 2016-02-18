@@ -6,21 +6,22 @@ namespace FindingIssuesWithCodeAnalysis
 	{
 		public void SaveItems(ReadOnlyCollection<string> items)
 		{
-			foreach(var item in items)
+			foreach (var item in items)
 			{
-				var transaction = new Transaction();
-
-				try
+				using (var transaction = new Transaction())
 				{
-					// Do expensive work with item...
-					transaction.Commit();
+					try
+					{
+						// Do expensive work with item...
+						transaction.Commit();
+					}
+					catch
+					{
+						transaction.Rollback();
+						throw;
+					}
 				}
-				catch
-				{
-					transaction.Rollback();
-					throw;
-				}
-         }
+			}
 		}
 	}
 }

@@ -10,8 +10,8 @@ namespace UsingAttributes
 {
 	class Program
 	{
-		private const int Iterations = 100000;
-		private const int MaximumRuns = 7;
+		private const int Iterations = 1000000;
+		private const int MaximumRuns = 10;
 
 		static void Main(string[] args)
 		{
@@ -63,7 +63,8 @@ namespace UsingAttributes
 				}
 			}
 
-			const string numberFormat = "#0.####";
+			const string numberFormat = "#0.###########";
+			var totalIterations = Program.Iterations * Program.MaximumRuns;
 
 			Console.Out.WriteLine();
 
@@ -75,11 +76,11 @@ namespace UsingAttributes
 				$"{nameof(Program.FindAttributeViaGenericGetCustomAttributes)} Total time: {findAttributeViaGenericGetCustomAttributesTotalTime.ToString(numberFormat)}ms");
 
 			Console.Out.WriteLine(
-				$"{nameof(Program.FindAttributeViaGetCustomAttributes)} Average: {(findAttributeViaGetCustomAttributesTotalTime / MaximumRuns).ToString(numberFormat)}ms");
+				$"{nameof(Program.FindAttributeViaGetCustomAttributes)} Average: {(findAttributeViaGetCustomAttributesTotalTime / totalIterations).ToString(numberFormat)}ms");
 			Console.Out.WriteLine(
-				$"{nameof(Program.FindAttributeViaGetCustomAttributeData)} Average: {(findAttributeViaGetCustomAttributeDataTotalTime / MaximumRuns).ToString(numberFormat)}ms");
+				$"{nameof(Program.FindAttributeViaGetCustomAttributeData)} Average: {(findAttributeViaGetCustomAttributeDataTotalTime / totalIterations).ToString(numberFormat)}ms");
 			Console.Out.WriteLine(
-				$"{nameof(Program.FindAttributeViaGenericGetCustomAttributes)} Average: {(findAttributeViaGenericGetCustomAttributesTotalTime/ MaximumRuns).ToString(numberFormat)}ms");
+				$"{nameof(Program.FindAttributeViaGenericGetCustomAttributes)} Average: {(findAttributeViaGenericGetCustomAttributesTotalTime/ totalIterations).ToString(numberFormat)}ms");
 
 			Console.Out.WriteLine(
 				$"Difference (GetCustomAttributeData): {((findAttributeViaGetCustomAttributesTotalTime - findAttributeViaGetCustomAttributeDataTotalTime) / findAttributeViaGetCustomAttributeDataTotalTime).ToString("#0.####%")}");
@@ -142,19 +143,19 @@ namespace UsingAttributes
 
 		private static void FindAttributeViaGetCustomAttributeData()
 		{
-			typeof(Program).Assembly.GetTypes().Any(
+			typeof(Program).Assembly.GetTypes().Where(
 				_ => _.GetCustomAttributes(false).Any(a => a is CustomAttribute));
 		}
 
 		private static void FindAttributeViaGetCustomAttributes()
 		{
-			typeof(Program).Assembly.GetTypes().Any(
+			typeof(Program).Assembly.GetTypes().Where(
 				_ => _.GetCustomAttributesData().Any(a => a.AttributeType == typeof(CustomAttribute)));
 		}
 
 		private static void FindAttributeViaGenericGetCustomAttributes()
 		{
-			typeof(Program).Assembly.GetTypes().Any(
+			typeof(Program).Assembly.GetTypes().Where(
 				_ => _.GetCustomAttributes<CustomAttribute>().Any());
 		}
 	}

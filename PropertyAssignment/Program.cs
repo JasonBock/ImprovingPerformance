@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Security.Principal;
 using Spackle;
 using StackExchange.Profiling;
 
@@ -58,7 +57,6 @@ namespace PropertyAssignment
 			Program.SetValuesDirectlyViaTemporaryObject(root);
 
 			var profiler = new MiniProfiler(Process.GetCurrentProcess().ProcessName);
-			profiler.User = WindowsIdentity.GetCurrent().Name;
 
 			Program.Profile(root, profiler);
 			Program.DisplayStatistics(profiler);
@@ -83,7 +81,8 @@ namespace PropertyAssignment
 				}
 			}
 
-			const string numberFormat = "#0.####";
+			const string numberFormat = "#0.###########";
+			var totalIterations = Program.Iterations * Program.MaximumRuns;
 
 			Console.Out.WriteLine();
 
@@ -93,9 +92,9 @@ namespace PropertyAssignment
 				$"{nameof(Program.SetValuesDirectlyViaTemporaryObject)} Total time: {setValuesDirectlyViaTemporaryObjectTotalTime.ToString(numberFormat)}ms");
 
 			Console.Out.WriteLine(
-				$"{nameof(Program.SetValuesDirectly)} Average: {(setValuesDirectlyTotalTime / MaximumRuns).ToString(numberFormat)}ms");
+				$"{nameof(Program.SetValuesDirectly)} Average: {(setValuesDirectlyTotalTime / totalIterations).ToString(numberFormat)}ms");
 			Console.Out.WriteLine(
-				$"{nameof(Program.SetValuesDirectlyViaTemporaryObject)} Average: {(setValuesDirectlyViaTemporaryObjectTotalTime / MaximumRuns).ToString(numberFormat)}ms");
+				$"{nameof(Program.SetValuesDirectlyViaTemporaryObject)} Average: {(setValuesDirectlyViaTemporaryObjectTotalTime / totalIterations).ToString(numberFormat)}ms");
 
 			Console.Out.WriteLine(
 				$"Difference: {((setValuesDirectlyTotalTime - setValuesDirectlyViaTemporaryObjectTotalTime) / setValuesDirectlyViaTemporaryObjectTotalTime).ToString("#0.####%")}");
