@@ -8,19 +8,33 @@ namespace FindingIssuesWithCodeAnalysis
 		{
 			foreach (var item in items)
 			{
-				using (var transaction = new Transaction())
+				// Incorrect code:
+				var transaction = new Transaction();
+				try
 				{
-					try
-					{
-						// Do expensive work with item...
-						transaction.Commit();
-					}
-					catch
-					{
-						transaction.Rollback();
-						throw;
-					}
+					// Do expensive work with item...
+					transaction.Commit();
 				}
+				catch
+				{
+					transaction.Rollback();
+					throw;
+				}
+
+				// Correct code:
+				//using (var transaction = new Transaction())
+				//{
+				//	try
+				//	{
+				//		// Do expensive work with item...
+				//		transaction.Commit();
+				//	}
+				//	catch
+				//	{
+				//		transaction.Rollback();
+				//		throw;
+				//	}
+				//}
 			}
 		}
 	}

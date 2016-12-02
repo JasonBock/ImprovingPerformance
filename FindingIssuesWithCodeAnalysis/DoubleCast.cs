@@ -2,12 +2,20 @@
 {
 	public static class DoubleCast
 	{
-		public static void CastItTwice(object x)
+		public static string CastItTwice(object x)
 		{
-			if(x is string)
+			// Incorrect code:
+			if (x is string)
 			{
-				var y = x as string;
+				return x as string;
 			}
+			else
+			{
+				return string.Empty;
+			}
+
+			// Correct code:
+			//return x as string ?? string.Empty;
 		}
 	}
 }

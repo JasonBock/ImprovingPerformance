@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Numerics;
-using System.Security.Cryptography;
 
 namespace Multiplication
 {
