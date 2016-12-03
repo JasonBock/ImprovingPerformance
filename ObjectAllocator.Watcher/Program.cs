@@ -1,5 +1,6 @@
 ﻿using Microsoft.Diagnostics.Runtime;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -39,16 +40,34 @@ namespace ObjectAllocator.Watcher
 											group addresses by type into addressGroup
 											let size = addressGroup.Sum(_ => (uint)addressGroup.Key.GetSize(_))
 											orderby size descending
-											select new
-											{
-												Name = addressGroup.Key.Name,
-												Size = size,
-												Count = addressGroup.Count()
-											};
-							foreach (var item in stats)
+											select new Stats(addressGroup.Key.Name, size, addressGroup.Count());
+
+							var top10 = 0;
+							var targetStats = new List<Stats>();
+
+							Console.Out.WriteLine("Top 10 objects");
+							foreach (var stat in stats)
+							{
+								if (top10 < 10)
+								{
+									Console.Out.WriteLine(
+										$"{stat.Size,12:n0} {stat.Count,12:n0} {stat.Name}");
+									top10++;
+								}
+
+								if (stat.Name.StartsWith("ObjectAllocator"))
+								{
+									targetStats.Add(stat);
+								}
+							}
+
+							Console.Out.WriteLine("------------------------");
+							Console.Out.WriteLine("ObjectAllocator objects");
+
+							foreach (var stat in targetStats)
 							{
 								Console.Out.WriteLine(
-									$"{item.Size,12:n0} {item.Count,12:n0} {item.Name}");
+									$"{stat.Size,12:n0} {stat.Count,12:n0} {stat.Name}");
 							}
 						}
 					}
@@ -57,6 +76,20 @@ namespace ObjectAllocator.Watcher
 						Console.Out.WriteLine("Couldn't find a running instance of ObjectAllocator.");
 					}
 				}
+			}
+		}
+
+		private sealed class Stats
+		{
+			public string Name { get; }
+			public long Size { get; }
+			public int Count { get; }
+
+			public Stats(string name, long size, int count)
+			{
+				this.Name = name;
+				this.Size = size;
+				this.Count = count;
 			}
 		}
 	}
