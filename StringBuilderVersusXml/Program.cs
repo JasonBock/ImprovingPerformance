@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Diagnostics.Windows;
+using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Running;
 using System;
 
@@ -9,8 +9,6 @@ namespace StringBuilderVersusXml
 	{
 		static void Main(string[] args)
 		{
-			//var result = BenchmarkRunner.Run<BuildingXml>();
-
 			var result = BenchmarkRunner.Run<BuildingXml>(
 				ManualConfig.Create(DefaultConfig.Instance)
 					.With(new MemoryDiagnoser()));

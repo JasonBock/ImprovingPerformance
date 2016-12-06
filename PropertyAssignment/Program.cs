@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Running;
+using System;
 
 namespace PropertyAssignment
 {
@@ -7,7 +9,11 @@ namespace PropertyAssignment
 	{
 		static void Main(string[] args)
 		{
-			Console.Out.WriteLine(BenchmarkRunner.Run<AssigningProperties>());
+			var result = BenchmarkRunner.Run<AssigningProperties>(
+				ManualConfig.Create(DefaultConfig.Instance)
+					.With(new MemoryDiagnoser()));
+
+			Console.Out.WriteLine();
 		}
 	}
 }

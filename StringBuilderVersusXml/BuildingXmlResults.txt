@@ -1,5 +1,5 @@
-                                   Method |      Mean |    StdErr |    StdDev |   Median |     Gen 0 | Bytes Allocated/Op |
------------------------------------------ |---------- |---------- |---------- |----------|---------- |------------------- |
-                    BuildViaStringBuilder | 1.0178 us | 0.0069 us | 0.0256 us |1.0111 us |    435.44 |           1,894.05 |
-                        BuildViaXDocument | 3.5816 us | 0.0334 us | 0.1251 us |3.5719 us |  4,957.11 |          27,254.60 |
- BuildViaStringBuilderAndXDocumentParsing | 7.5133 us | 0.0950 us | 0.3917 us |7.3835 us | 10,195.00 |          57,209.30 |
+                                   Method |          Mean |     StdDev |   Gen 0 | Allocated |
+----------------------------------------- |-------------- |----------- |-------- |---------- |
+                    BuildViaStringBuilder |   976.3423 ns | 13.2492 ns |  0.5119 |   1.18 kB |
+                        BuildViaXDocument | 3,377.6459 ns | 54.9588 ns |  7.0658 |  15.25 kB |
+ BuildViaStringBuilderAndXDocumentParsing | 7,013.8502 ns | 40.9603 ns | 12.8449 |  27.35 kB |
