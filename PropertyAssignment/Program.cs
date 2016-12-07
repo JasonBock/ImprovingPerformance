@@ -13,7 +13,7 @@ namespace PropertyAssignment
 				ManualConfig.Create(DefaultConfig.Instance)
 					.With(new MemoryDiagnoser()));
 
-			Console.Out.WriteLine();
+			Console.Out.WriteLine(result);
 		}
 	}
 }

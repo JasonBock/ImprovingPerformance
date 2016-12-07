@@ -38,7 +38,7 @@ namespace PropertyAssignment
 		}
 
 		[Benchmark]
-		public void SetValuesDirectlyViaTemporaryObject()
+		public Root SetValuesDirectlyViaTemporaryObject()
 		{
 			var source = this.root;
 			var root = new Root();
@@ -64,10 +64,12 @@ namespace PropertyAssignment
 			child.UriValue2 = sourceChild.UriValue2;
 			child.UriValue3 = sourceChild.UriValue3;
 			child.UriValue4 = sourceChild.UriValue4;
+
+			return root;
 		}
 
 		[Benchmark]
-		public void SetValuesDirectly()
+		public Root SetValuesDirectly()
 		{
 			var source = this.root;
 			var root = new Root();
@@ -91,6 +93,8 @@ namespace PropertyAssignment
 			root.Intermediate.Child.UriValue2 = source.Intermediate.Child.UriValue2;
 			root.Intermediate.Child.UriValue3 = source.Intermediate.Child.UriValue3;
 			root.Intermediate.Child.UriValue4 = source.Intermediate.Child.UriValue4;
+
+			return root;
 		}
 	}
 }

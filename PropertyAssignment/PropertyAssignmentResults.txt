@@ -1,0 +1,4 @@
+                              Method |       Mean |    StdErr |    StdDev |  Gen 0 |
+------------------------------------ |----------- |---------- |---------- |------- |
+ SetValuesDirectlyViaTemporaryObject | 53.5542 ns | 0.5540 ns | 2.1456 ns | 0.1148 |
+                   SetValuesDirectly | 54.3406 ns | 0.2866 ns | 1.1099 ns | 0.1170 |

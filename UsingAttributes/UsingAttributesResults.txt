@@ -1,0 +1,5 @@
+                                     Method |        Mean |    StdErr |     StdDev |      Median |
+------------------------------------------- |------------ |---------- |----------- |------------ |
+     FindAttributeViaGetCustomAttributeData | 952.7874 ns | 9.5928 ns | 95.9280 ns | 902.4316 ns |
+        FindAttributeViaGetCustomAttributes | 895.1999 ns | 3.7064 ns | 13.8680 ns | 898.5457 ns |
+ FindAttributeViaGenericGetCustomAttributes | 908.0904 ns | 8.4624 ns | 30.5115 ns | 902.6784 ns |

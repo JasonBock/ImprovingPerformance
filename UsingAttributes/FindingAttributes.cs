@@ -1,29 +1,31 @@
-﻿using System.Linq;
+﻿using BenchmarkDotNet.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
-using BenchmarkDotNet.Attributes;
 
 namespace UsingAttributes
 {
 	public class FindingAttributes
 	{
 		[Benchmark]
-		public void FindAttributeViaGetCustomAttributeData()
+		public IEnumerable<Type> FindAttributeViaGetCustomAttributeData()
 		{
-			typeof(Program).Assembly.GetTypes().Where(
+			return typeof(Program).Assembly.GetTypes().Where(
 				_ => _.GetCustomAttributes(false).Any(a => a is CustomAttribute));
 		}
 
 		[Benchmark]
-		public void FindAttributeViaGetCustomAttributes()
+		public IEnumerable<Type> FindAttributeViaGetCustomAttributes()
 		{
-			typeof(Program).Assembly.GetTypes().Where(
+			return typeof(Program).Assembly.GetTypes().Where(
 				_ => _.GetCustomAttributesData().Any(a => a.AttributeType == typeof(CustomAttribute)));
 		}
 
 		[Benchmark]
-		public void FindAttributeViaGenericGetCustomAttributes()
+		public IEnumerable<Type> FindAttributeViaGenericGetCustomAttributes()
 		{
-			typeof(Program).Assembly.GetTypes().Where(
+			return typeof(Program).Assembly.GetTypes().Where(
 				_ => _.GetCustomAttributes<CustomAttribute>().Any());
 		}
 	}

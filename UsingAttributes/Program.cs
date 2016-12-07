@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Running;
+using System;
 
 namespace UsingAttributes
 {
@@ -7,7 +9,11 @@ namespace UsingAttributes
 	{
 		static void Main(string[] args)
 		{
-			Console.Out.WriteLine(BenchmarkRunner.Run<FindingAttributes>());
+			var result = BenchmarkRunner.Run<FindingAttributes>(
+				ManualConfig.Create(DefaultConfig.Instance)
+					.With(new MemoryDiagnoser()));
+
+			Console.Out.WriteLine(result);
 		}
 	}
 }
