@@ -2,7 +2,7 @@
 {
 	public sealed class LargeObject
 	{
-		private int[] data;
+		private readonly int[] data;
 
 		public LargeObject()
 		{

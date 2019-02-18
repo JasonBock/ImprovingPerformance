@@ -4,11 +4,13 @@ using System;
 
 namespace PropertyAssignment
 {
+	[MemoryDiagnoser]
+	[ClrJob, CoreJob]
 	public class AssigningProperties
 	{
 		private Root root;
 
-		[Setup]
+		[GlobalSetup]
 		public void Setup()
 		{
 			var generator = new RandomObjectGenerator();

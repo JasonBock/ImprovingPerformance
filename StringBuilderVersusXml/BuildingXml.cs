@@ -4,6 +4,8 @@ using System.Xml.Linq;
 
 namespace StringBuilderVersusXml
 {
+	[MemoryDiagnoser]
+	[ClrJob, CoreJob]
 	public class BuildingXml
 	{
 		[Benchmark]

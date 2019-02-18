@@ -1,4 +1,16 @@
-                              Method |       Mean |    StdErr |    StdDev |  Gen 0 |
------------------------------------- |----------- |---------- |---------- |------- |
- SetValuesDirectlyViaTemporaryObject | 53.5542 ns | 0.5540 ns | 2.1456 ns | 0.1148 |
-                   SetValuesDirectly | 54.3406 ns | 0.2866 ns | 1.1099 ns | 0.1170 |
+2/19/2019
+
+BenchmarkDotNet=v0.11.4, OS=Windows 10.0.17763.316 (1809/October2018Update/Redstone5)
+Intel Core i7-7820HQ CPU 2.90GHz (Kaby Lake), 1 CPU, 8 logical and 4 physical cores
+.NET Core SDK=2.2.101
+  [Host] : .NET Core 2.2.0 (CoreCLR 4.6.27110.04, CoreFX 4.6.27110.04), 64bit RyuJIT
+  Clr    : .NET Framework 4.7.2 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.3190.0
+  Core   : .NET Core 2.2.0 (CoreCLR 4.6.27110.04, CoreFX 4.6.27110.04), 64bit RyuJIT
+
+
+|                              Method |  Job | Runtime |     Mean |     Error |    StdDev | Gen 0/1k Op | Gen 1/1k Op | Gen 2/1k Op | Allocated Memory/Op |
+|------------------------------------ |----- |-------- |---------:|----------:|----------:|------------:|------------:|------------:|--------------------:|
+| SetValuesDirectlyViaTemporaryObject |  Clr |     Clr | 54.44 ns | 1.2646 ns | 1.5531 ns |      0.0590 |           - |           - |               248 B |
+|                   SetValuesDirectly |  Clr |     Clr | 57.54 ns | 0.7624 ns | 0.7132 ns |      0.0590 |           - |           - |               248 B |
+| SetValuesDirectlyViaTemporaryObject | Core |    Core | 49.00 ns | 0.5068 ns | 0.4493 ns |      0.0591 |           - |           - |               248 B |
+|                   SetValuesDirectly | Core |    Core | 51.51 ns | 0.3666 ns | 0.3061 ns |      0.0591 |           - |           - |               248 B |

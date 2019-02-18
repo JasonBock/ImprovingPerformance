@@ -44,13 +44,11 @@ namespace CopyArrays
 		private void RunCopy<T>()
 			where T: ArrayCopier<string>, new()
 		{
-			var numberOfItems = 0;
-
-			if(int.TryParse(this.NumberOfItems.Text, out numberOfItems))
+			if (int.TryParse(this.NumberOfItems.Text, out var numberOfItems))
 			{
 				var source = new string[numberOfItems];
 
-				for(var i = 0; i < numberOfItems; i++)
+				for (var i = 0; i < numberOfItems; i++)
 				{
 					source[i] = Guid.NewGuid().ToString();
 				}

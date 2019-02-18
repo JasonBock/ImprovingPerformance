@@ -1,32 +1,25 @@
 ﻿using BenchmarkDotNet.Attributes;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
 namespace UsingAttributes
 {
+	[MemoryDiagnoser]
 	public class FindingAttributes
 	{
-		[Benchmark]
-		public IEnumerable<Type> FindAttributeViaGetCustomAttributeData()
-		{
-			return typeof(Program).Assembly.GetTypes().Where(
-				_ => _.GetCustomAttributes(false).Any(a => a is CustomAttribute));
-		}
+		private static readonly Type[] types = typeof(Program).Assembly.GetTypes();
 
 		[Benchmark]
-		public IEnumerable<Type> FindAttributeViaGetCustomAttributes()
-		{
-			return typeof(Program).Assembly.GetTypes().Where(
-				_ => _.GetCustomAttributesData().Any(a => a.AttributeType == typeof(CustomAttribute)));
-		}
+		public int FindAttributeViaGetCustomAttributeData() =>
+			FindingAttributes.types.Count(_ => _.GetCustomAttributes(false).Any(a => a is CustomAttribute));
 
 		[Benchmark]
-		public IEnumerable<Type> FindAttributeViaGenericGetCustomAttributes()
-		{
-			return typeof(Program).Assembly.GetTypes().Where(
-				_ => _.GetCustomAttributes<CustomAttribute>().Any());
-		}
+		public int FindAttributeViaGetCustomAttributes() =>
+			FindingAttributes.types.Count(_ => _.GetCustomAttributesData().Any(a => a.AttributeType == typeof(CustomAttribute)));
+
+		[Benchmark]
+		public int FindAttributeViaGenericGetCustomAttributes() =>
+			FindingAttributes.types.Count(_ => _.GetCustomAttributes<CustomAttribute>().Any());
 	}
 }
