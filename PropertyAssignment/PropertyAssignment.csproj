@@ -8,12 +8,6 @@
     <TargetFrameworks>netcoreapp2.2;net471</TargetFrameworks>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.2|AnyCPU'">
-    <CodeAnalysisRuleSet>..\FindingIssuesWithCodeAnalysis\FindingIssuesWithCodeAnalysis.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.2|AnyCPU'">
-    <CodeAnalysisRuleSet>..\FindingIssuesWithCodeAnalysis\FindingIssuesWithCodeAnalysis.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.11.4" />
     <PackageReference Include="Spackle" Version="8.3.0" />

@@ -1,14 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <AssemblyName>UsingAttributes</AssemblyName>
+    <AssemblyName>UsingSpan</AssemblyName>
     <LangVersion>latest</LangVersion>
-    <RootNamespace>UsingAttributes</RootNamespace>
+    <RootNamespace>UsingSpan</RootNamespace>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <OutputType>Exe</OutputType>
-    <StartupObject>UsingAttributes.Program</StartupObject>
+    <StartupObject>UsingSpan.Program</StartupObject>
   </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="System.Text.Formatting" Version="0.1.1-preview2-190117-2" />
     <PackageReference Include="BenchmarkDotNet" Version="0.11.4" />
   </ItemGroup>
+
 </Project>

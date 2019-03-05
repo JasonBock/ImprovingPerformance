@@ -5,7 +5,7 @@ namespace UsingAttributes
 {
 	class Program
 	{
-		static void Main(string[] args) => Console.Out.WriteLine(
-			BenchmarkRunner.Run<FindingAttributes>());
+		static void Main() => 
+			Console.Out.WriteLine(BenchmarkRunner.Run<FindingAttributes>());
 	}
 }

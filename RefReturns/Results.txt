@@ -1,0 +1,4 @@
+﻿|              Method |       Mean |     Error |    StdDev | Ratio | RatioSD | Gen 0/1k Op | Gen 1/1k Op | Gen 2/1k Op | Allocated Memory/Op |
+|-------------------- |-----------:|----------:|----------:|------:|--------:|------------:|------------:|------------:|--------------------:|
+| GetNameFromFastList |  0.3392 ns | 0.0190 ns | 0.0178 ns |  1.00 |    0.00 |           - |           - |           - |                   - |
+| GetNameFromSlowList | 19.9427 ns | 0.1440 ns | 0.1202 ns | 59.00 |    3.14 |           - |           - |           - |                   - |

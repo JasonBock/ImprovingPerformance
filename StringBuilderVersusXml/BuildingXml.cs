@@ -23,15 +23,13 @@ namespace StringBuilderVersusXml
 		}
 
 		[Benchmark]
-		public string BuildViaXDocument()
-		{
-			return new XDocument(
-				new XElement("Root", 
+		public string BuildViaXDocument() =>
+			new XDocument(
+				new XElement("Root",
 					new XElement("XYZOp", "ABC-CityMarket"),
 					new XElement("XYZBatchID", 342),
 					new XElement("AutoSubmit", true),
 					new XElement("Delinked", false))).ToString();
-		}
 
 		[Benchmark]
 		public string BuildViaStringBuilderAndXDocumentParsing()

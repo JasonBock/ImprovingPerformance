@@ -1,14 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <AssemblyName>UsingAttributes</AssemblyName>
+    <AssemblyName>EmptyArrays</AssemblyName>
     <LangVersion>latest</LangVersion>
-    <RootNamespace>UsingAttributes</RootNamespace>
+    <RootNamespace>EmptyArrays</RootNamespace>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <OutputType>Exe</OutputType>
-    <StartupObject>UsingAttributes.Program</StartupObject>
+    <StartupObject>EmptyArrays.Program</StartupObject>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.11.4" />
   </ItemGroup>
+
 </Project>

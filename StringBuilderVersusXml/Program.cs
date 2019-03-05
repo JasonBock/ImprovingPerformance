@@ -5,7 +5,7 @@ namespace StringBuilderVersusXml
 {
 	class Program
 	{
-		static void Main(string[] args) => 
+		static void Main() => 
 			Console.Out.WriteLine(BenchmarkRunner.Run<BuildingXml>());
 	}
 }
