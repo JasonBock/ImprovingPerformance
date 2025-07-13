@@ -1,14 +1,9 @@
-﻿using System;
+﻿namespace ObjectAllocator;
 
-namespace ObjectAllocator
+public sealed class MediumObject
 {
-	public sealed class MediumObject
-	{
-		public MediumObject()
-		{
-			this.Data = Guid.NewGuid().ToString("N");
-		}
+   public MediumObject() => 
+		this.Data = Guid.NewGuid().ToString("N");
 
-		public string Data { get; }
-	}
+   public string Data { get; }
 }

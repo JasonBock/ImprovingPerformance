@@ -1,11 +1,4 @@
 ﻿using BenchmarkDotNet.Running;
-using System;
+using UsingAttributes;
 
-namespace UsingAttributes
-{
-	class Program
-	{
-		static void Main() => 
-			Console.Out.WriteLine(BenchmarkRunner.Run<FindingAttributes>());
-	}
-}
+Console.WriteLine(BenchmarkRunner.Run<FindingAttributes>());

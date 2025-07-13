@@ -1,11 +1,5 @@
-﻿using BenchmarkDotNet.Running;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using System;
-using System.IO;
+﻿namespace ProfilingHelloWorld;
 
-namespace ProfilingHelloWorld
-{
 	public static class Program
 	{
 		public const string HelloWorldFile = "HelloWorld.exe";
@@ -60,4 +54,3 @@ namespace HelloWorld
 		private static void ProfileHelloWorld() => 
 			Console.Out.WriteLine(BenchmarkRunner.Run<RunHelloWorld>());
 	}
-}

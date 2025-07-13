@@ -1,5 +1,5 @@
-﻿namespace PropertyAssignment
-{
+﻿namespace PropertyAssignment;
+
 	public sealed class Intermediate
 	{
 		public Intermediate()
@@ -9,4 +9,3 @@
 
 		public Child Child { get; set; }
 	}
-}

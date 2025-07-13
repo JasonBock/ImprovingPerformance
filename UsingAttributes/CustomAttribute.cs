@@ -1,7 +1,5 @@
-﻿using System;
+﻿namespace UsingAttributes;
 
-namespace UsingAttributes
-{
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
 	public sealed class CustomAttribute
 		: Attribute
@@ -15,4 +13,3 @@ namespace UsingAttributes
 		public string Data { get; }
 		public int Value { get; }
 	}
-}

@@ -1,5 +1,5 @@
-﻿namespace UsingAttributes
-{
+﻿namespace UsingAttributes;
+
 	[Custom("a", 1)]
 	public sealed class HasAttribute1 { }
 
@@ -19,4 +19,3 @@
 	public sealed class HasAttribute4 { }
 
 	public sealed class DoesNotHaveAttribute4 { }
-}

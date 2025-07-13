@@ -1,9 +1,5 @@
-﻿using BenchmarkDotNet.Attributes;
-using Spackle;
-using System;
+﻿namespace PropertyAssignment;
 
-namespace PropertyAssignment
-{
 	[MemoryDiagnoser]
 	[ClrJob, CoreJob]
 	public class AssigningProperties
@@ -99,4 +95,3 @@ namespace PropertyAssignment
 			return root;
 		}
 	}
-}

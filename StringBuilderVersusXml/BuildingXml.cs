@@ -1,9 +1,8 @@
-﻿using BenchmarkDotNet.Attributes;
-using System.Text;
+﻿using System.Text;
 using System.Xml.Linq;
 
-namespace StringBuilderVersusXml
-{
+namespace StringBuilderVersusXml;
+
 	[MemoryDiagnoser]
 	[ClrJob, CoreJob]
 	public class BuildingXml
@@ -45,4 +44,3 @@ namespace StringBuilderVersusXml
 			return XDocument.Parse(string.Format("<Root>{0}</Root>", xml.ToString())).ToString();
 		}
 	}
-}

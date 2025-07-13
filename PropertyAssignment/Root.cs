@@ -1,5 +1,5 @@
-﻿namespace PropertyAssignment
-{
+﻿namespace PropertyAssignment;
+
 	public sealed class Root
 	{
 		public Root()
@@ -9,4 +9,3 @@
 
 		public Intermediate Intermediate { get; set; }
 	}
-}

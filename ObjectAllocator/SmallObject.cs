@@ -1,4 +1,3 @@
-﻿namespace ObjectAllocator
-{
-	public sealed class SmallObject { }
-}
+﻿namespace ObjectAllocator;
+
+public sealed class SmallObject { }

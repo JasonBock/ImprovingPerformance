@@ -1,7 +1,5 @@
-﻿using System;
+﻿namespace PropertyAssignment;
 
-namespace PropertyAssignment
-{
 	public sealed class Child
 	{
 		public Guid GuidValue0 { get; set; }
@@ -25,4 +23,3 @@ namespace PropertyAssignment
 		public Uri UriValue3 { get; set; }
 		public Uri UriValue4 { get; set; }
 	}
-}

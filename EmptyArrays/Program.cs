@@ -1,10 +1,4 @@
 ﻿using BenchmarkDotNet.Running;
+using EmptyArrays;
 
-namespace EmptyArrays
-{
-	class Program
-	{
-		static void Main() =>
-			BenchmarkRunner.Run<ReturnEmptyArrays>();
-	}
-}
+BenchmarkRunner.Run<ReturnEmptyArrays>();

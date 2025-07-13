@@ -1,10 +1,4 @@
 ﻿using BenchmarkDotNet.Running;
+using RefReturns;
 
-namespace RefReturns
-{
-	class Program
-	{
-		static void Main() =>
-			BenchmarkRunner.Run<ListIndexPerformance>();
-	}
-}
+BenchmarkRunner.Run<ListIndexPerformance>();

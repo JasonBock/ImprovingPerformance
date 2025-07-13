@@ -1,46 +1,40 @@
-﻿using Spackle;
-using System;
-using System.Collections.Generic;
+﻿using ObjectAllocator;
+using System.Security.Cryptography;
 
-namespace ObjectAllocator
+Console.WriteLine("ObjectAllocator");
+Console.WriteLine();
+Console.WriteLine("Press enter to generate a random object, or \"STOP\" to exit.");
+
+var objects = new List<object>();
+
+while (true)
 {
-	class Program
+	var command = Console.ReadLine();
+
+	if (command == "STOP")
 	{
-		static void Main()
+		break;
+	}
+	else
+	{
+		var type = RandomNumberGenerator.GetInt32(3);
+
+		if (type == 0)
 		{
-			Console.Out.WriteLine("Press enter to generate a random object, or \"STOP\" to exit.");
-
-			var objects = new List<object>();
-			var random = new SecureRandom();
-
-			while(true)
-			{
-				var command = Console.In.ReadLine();
-
-				if(command == "STOP")
-				{
-					break;
-				}
-				else
-				{
-					var type = random.Next(3);
-
-					if(type == 0)
-					{
-						objects.Add(new SmallObject());
-					}
-					else if(type == 1)
-					{
-						objects.Add(new MediumObject());
-					}
-					else
-					{
-						objects.Add(new LargeObject());
-					}
-
-					Console.Out.WriteLine($"Current object count: {objects.Count}");
-				}
-			}
+			objects.Add(new SmallObject());
+			Console.WriteLine("Added small object.");
 		}
+		else if (type == 1)
+		{
+			objects.Add(new MediumObject());
+			Console.WriteLine("Added medium object.");
+		}
+		else
+		{
+			objects.Add(new LargeObject());
+			Console.WriteLine("Added large object.");
+		}
+
+		Console.WriteLine($"Current object count: {objects.Count}");
 	}
 }

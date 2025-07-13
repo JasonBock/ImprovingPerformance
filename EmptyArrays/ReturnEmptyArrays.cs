@@ -1,15 +1,15 @@
 ﻿using BenchmarkDotNet.Attributes;
-using System;
 
-namespace EmptyArrays
+namespace EmptyArrays;
+
+[MemoryDiagnoser]
+public class ReturnEmptyArrays
 {
-	[MemoryDiagnoser]
-	public class ReturnEmptyArrays
-	{
-		[Benchmark]
-		public int[] EmptyViaNew() => new int[0];
+	[Benchmark]
+#pragma warning disable CA1825 // Avoid zero-length array allocations
+	public int[] EmptyViaNew() => new int[0];
+#pragma warning restore CA1825 // Avoid zero-length array allocations
 
-		[Benchmark]
-		public int[] EmptyViaArray() => Array.Empty<int>();
-	}
+	[Benchmark]
+	public int[] EmptyViaArray() => Array.Empty<int>();
 }

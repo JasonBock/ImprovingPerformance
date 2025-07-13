@@ -1,22 +1,20 @@
-﻿using System;
+﻿namespace CopyArrays;
 
-namespace CopyArrays
+internal static class ManualArrayCopier<T>
 {
-	public sealed class ManualArrayCopier<T>
-		: ArrayCopier<T>
+	// For all that is good in the world, DON'T repeat this! :)
+	internal static T[] Copy(T[] source)
 	{
-		// For all that is good in the world, DON'T repeat this! :)
-		public override void Copy(T[] source)
-		{
-			this.Content = new T[0];
+		var result = Array.Empty<T>();
 
-			foreach(var item in source)
-			{
-				var holder = new T[this.Content.Length + 1];
-				this.Content.CopyTo(holder, 0);
-				holder[this.Content.Length] = item;
-				this.Content = holder;
-			}
+		foreach (var item in source)
+		{
+			var holder = new T[result.Length + 1];
+			result.CopyTo(holder, 0);
+			holder[result.Length] = item;
+			result = holder;
 		}
+
+		return result;
 	}
 }

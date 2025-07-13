@@ -1,15 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <AssemblyName>PropertyAssignment</AssemblyName>
-    <LangVersion>latest</LangVersion>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>PropertyAssignment</RootNamespace>
-    <StartupObject>PropertyAssignment.Program</StartupObject>
-    <TargetFrameworks>netcoreapp2.2;net471</TargetFrameworks>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.11.4" />
-    <PackageReference Include="Spackle" Version="8.3.0" />
-  </ItemGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="BenchmarkDotNet" />
+		<PackageReference Include="Spackle" />
+	</ItemGroup>
 </Project>

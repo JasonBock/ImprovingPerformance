@@ -1,16 +1,13 @@
-﻿using System;
+﻿namespace FindingIssuesWithCodeAnalysis;
 
-namespace FindingIssuesWithCodeAnalysis
-{
-	// Correct
-	[AttributeUsage(AttributeTargets.All)]
-	public sealed class SealedAttribute
-		: Attribute
-	{ }
+// Correct
+[AttributeUsage(AttributeTargets.All)]
+public sealed class SealedAttribute
+	: Attribute
+{ }
 
-	// Incorrect
-	//[AttributeUsage(AttributeTargets.All)]
-	//public class UnsealedAttribute
-	//	: Attribute
-	//{ }
-}
+//Incorrect
+//[AttributeUsage(AttributeTargets.All)]
+//public class UnsealedAttribute
+//	: Attribute
+//{ }

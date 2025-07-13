@@ -1,10 +1,4 @@
 ﻿using BenchmarkDotNet.Running;
+using UsingSpan;
 
-namespace UsingSpan
-{
-	class Program
-	{
-		static void Main() =>
-			BenchmarkRunner.Run<ReturnEmptyArrays>();
-	}
-}
+BenchmarkRunner.Run<BufferGeneratorPerformance>();

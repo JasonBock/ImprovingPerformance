@@ -1,12 +1,8 @@
-﻿namespace ObjectAllocator
-{
-	public sealed class LargeObject
-	{
-		private readonly int[] data;
+﻿namespace ObjectAllocator;
 
-		public LargeObject()
-		{
-			this.data = new int[10000];
-		}
-	}
+public sealed class LargeObject
+{
+	private readonly int[] data;
+
+   public LargeObject() => this.data = new int[10000];
 }

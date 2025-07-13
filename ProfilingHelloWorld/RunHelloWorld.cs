@@ -1,8 +1,5 @@
-﻿using BenchmarkDotNet.Attributes;
-using System.Diagnostics;
+﻿namespace ProfilingHelloWorld;
 
-namespace ProfilingHelloWorld
-{
 	[MemoryDiagnoser]
 	public class RunHelloWorld
 	{
@@ -21,4 +18,3 @@ namespace ProfilingHelloWorld
 			return process.ExitCode;
 		}
 	}
-}
