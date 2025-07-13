@@ -1,7 +1,4 @@
-﻿namespace PropertyAssignment;
+﻿using BenchmarkDotNet.Running;
+using PropertyAssignment;
 
-	class Program
-	{
-		static void Main() => 
-			Console.Out.WriteLine(BenchmarkRunner.Run<AssigningProperties>());
-	}
+BenchmarkRunner.Run<AssigningProperties>();

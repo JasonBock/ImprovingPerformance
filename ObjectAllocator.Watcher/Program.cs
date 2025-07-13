@@ -67,16 +67,4 @@ while (true)
 	}
 }
 
-internal sealed class Stats
-{
-	public string Name { get; }
-	public long Size { get; }
-	public int Count { get; }
-
-	public Stats(string name, long size, int count)
-	{
-		this.Name = name;
-		this.Size = size;
-		this.Count = count;
-	}
-}
+internal sealed record Stats(string Name, long Size, int Count);

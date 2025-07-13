@@ -1,6 +1,7 @@
 <Project>
-  <ItemGroup>
-    <PackageVersion Include="BenchmarkDotNet" Version="0.14.0" />
-    <PackageVersion Include="Microsoft.Diagnostics.Runtime" Version="3.1.512801" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageVersion Include="BenchmarkDotNet" Version="0.14.0" />
+		<PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+		<PackageVersion Include="Microsoft.Diagnostics.Runtime" Version="3.1.512801" />
+	</ItemGroup>
 </Project>

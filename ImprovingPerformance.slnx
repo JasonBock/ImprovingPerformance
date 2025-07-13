@@ -17,11 +17,6 @@
   </Project>
   <Project Path="EmptyArrays/EmptyArrays.csproj" />
   <Project Path="FindingIssuesWithCodeAnalysis/FindingIssuesWithCodeAnalysis.csproj" />
-  <Project Path="Multiplication/Multiplication.csproj" Id="8230e7f9-098d-43d9-a43c-7875286e5365">
-    <Build Solution="*|ARM" Project="false" />
-    <Build Solution="*|x64" Project="false" />
-    <Build Solution="*|x86" Project="false" />
-  </Project>
   <Project Path="ObjectAllocator.Watcher/ObjectAllocator.Watcher.csproj" Id="88e5ef5f-db3f-4ae1-8394-36d070dcffc6" />
   <Project Path="ObjectAllocator/ObjectAllocator.csproj" Id="62290ab0-3e8a-4069-9d58-9f3367b072df" />
   <Project Path="ProfilingHelloWorld/ProfilingHelloWorld.csproj" />
@@ -31,7 +26,6 @@
     <Build Solution="Debug|x86" Project="false" />
   </Project>
   <Project Path="RefReturns/RefReturns.csproj" />
-  <Project Path="StringBuilderVersusXml/StringBuilderVersusXml.csproj" />
   <Project Path="UsingAttributes/UsingAttributes.csproj" />
   <Project Path="UsingSpan/UsingSpan.csproj" />
   <Properties Name="Performance">

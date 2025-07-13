@@ -1,20 +1,25 @@
-﻿namespace ProfilingHelloWorld;
+﻿using BenchmarkDotNet.Attributes;
+using System.Diagnostics;
 
-	[MemoryDiagnoser]
-	public class RunHelloWorld
+namespace ProfilingHelloWorld;
+
+[Config(typeof(AntiVirusFriendlyConfiguration))]
+[MemoryDiagnoser]
+public class RunHelloWorld
+{
+	private readonly ProcessStartInfo startInfo = new(Shared.HelloWorldFile)
 	{
-		private readonly ProcessStartInfo startInfo = new ProcessStartInfo(Program.HelloWorldFile)
-		{
-			Arguments = "a b c",
-			CreateNoWindow = true,
-			WindowStyle = ProcessWindowStyle.Hidden
-		};
+		Arguments = "a b c",
+		CreateNoWindow = true,
+		UseShellExecute = true,
+		WindowStyle = ProcessWindowStyle.Hidden
+	};
 
-		[Benchmark]
-		public int Execute()
-		{
-			var process = Process.Start(this.startInfo);
-			process.WaitForExit();
-			return process.ExitCode;
-		}
+	[Benchmark]
+	public int Execute()
+	{
+		var process = Process.Start(this.startInfo)!;
+		process.WaitForExit();
+		return process.ExitCode;
 	}
+}

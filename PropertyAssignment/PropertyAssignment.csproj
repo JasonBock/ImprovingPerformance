@@ -4,6 +4,5 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="BenchmarkDotNet" />
-		<PackageReference Include="Spackle" />
 	</ItemGroup>
 </Project>

@@ -1,56 +1,42 @@
-﻿namespace ProfilingHelloWorld;
+﻿using BenchmarkDotNet.Running;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using ProfilingHelloWorld;
+using System.Reflection;
 
-	public static class Program
-	{
-		public const string HelloWorldFile = "HelloWorld.exe";
+BuildHelloWorld();
+ProfileHelloWorld();
 
-		public static void Foo(int[] values) { }
+static void BuildHelloWorld()
+{
+	var code =
+		"""
+		using System;
 
-		public static void Main()
+		if (args is not null)
 		{
-			Program.Foo(Array.Empty<int>());
-			Program.BuildHelloWorld();
-			Program.ProfileHelloWorld();
-		}
-
-		private static void BuildHelloWorld()
-		{
-			var code =
-@"using System;
-
-namespace HelloWorld 
-{  
-	class Program  
-	{    
-		static void Main(string[] args)    
-		{      
-			if(args != null)
+			for (var i = 0; i < args.Length; i++)
 			{
-				for(var i = 0; i < args.Length; i++)
-				{
-					Console.Out.WriteLine($""{i} : {args[i]}"");
-				}
-			}
-			Console.Out.WriteLine(""Hello world!"");    
-		}  
-	} 
-}";
-
-			var tree = SyntaxFactory.ParseSyntaxTree(code);
-			var compilation = CSharpCompilation.Create(Program.HelloWorldFile, 
-				options: new CSharpCompilationOptions(OutputKind.ConsoleApplication), 
-				syntaxTrees: new[] { tree }, 
-				references: new[] 
-				{
-					MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
-				});
-
-			using (var stream = new FileStream(Program.HelloWorldFile, FileMode.Create, FileAccess.Write))
-			{
-				compilation.Emit(stream);
+				Console.WriteLine($"{i} : {args[i]}");
 			}
 		}
 
-		private static void ProfileHelloWorld() => 
-			Console.Out.WriteLine(BenchmarkRunner.Run<RunHelloWorld>());
-	}
+		Console.WriteLine("Hello world!");    
+		""";
+
+	var tree = SyntaxFactory.ParseSyntaxTree(code);
+	var dotNetCoreDir = Path.GetDirectoryName(typeof(object).GetTypeInfo().Assembly.Location)!;
+	var compilation = CSharpCompilation.Create(Shared.HelloWorldFile,
+		options: new CSharpCompilationOptions(OutputKind.ConsoleApplication).WithPlatform(Platform.AnyCpu),
+		syntaxTrees: [tree])
+		.AddReferences(
+			MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location),
+			MetadataReference.CreateFromFile(typeof(Console).GetTypeInfo().Assembly.Location),
+			MetadataReference.CreateFromFile(Path.Combine(dotNetCoreDir, "System.Runtime.dll")));
+
+	using var stream = new FileStream(Shared.HelloWorldFile, FileMode.Create, FileAccess.Write);
+	var result = compilation.Emit(stream);
+}
+
+static void ProfileHelloWorld() =>
+	Console.WriteLine(BenchmarkRunner.Run<RunHelloWorld>());
