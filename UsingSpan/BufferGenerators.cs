@@ -46,8 +46,8 @@ internal static class BufferGenerators
 
 	internal static byte[] GenerateWithSpan(int value, Coordinate coordinate, string data)
 	{
-		var valueArray = MemoryMarshal.Cast<int, byte>(new Span<int>(new[] { value })).ToArray();
-		var pointArray = MemoryMarshal.Cast<Coordinate, byte>(new Span<Coordinate>(new[] { coordinate })).ToArray();
+		var valueArray = MemoryMarshal.Cast<int, byte>(new Span<int>([value])).ToArray();
+		var pointArray = MemoryMarshal.Cast<Coordinate, byte>(new Span<Coordinate>([coordinate])).ToArray();
 		var dataArray = MemoryMarshal.Cast<char, byte>(data.AsSpan()).ToArray();
 
 		var buffer = new List<byte>();

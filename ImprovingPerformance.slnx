@@ -17,6 +17,7 @@
   </Project>
   <Project Path="EmptyArrays/EmptyArrays.csproj" />
   <Project Path="FindingIssuesWithCodeAnalysis/FindingIssuesWithCodeAnalysis.csproj" />
+  <Project Path="NumberSeparatorFormatting/NumberSeparatorFormatting.csproj" Id="a2a19ded-38f9-458c-9220-a1e081e29124" />
   <Project Path="ObjectAllocator.Watcher/ObjectAllocator.Watcher.csproj" Id="88e5ef5f-db3f-4ae1-8394-36d070dcffc6" />
   <Project Path="ObjectAllocator/ObjectAllocator.csproj" Id="62290ab0-3e8a-4069-9d58-9f3367b072df" />
   <Project Path="ProfilingHelloWorld/ProfilingHelloWorld.csproj" />

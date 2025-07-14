@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<NoWarn>$(NoWarn),CA1822</NoWarn>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Diagnostics.Runtime" />
+		<PackageReference Include="BenchmarkDotNet" />
 	</ItemGroup>
 </Project>
