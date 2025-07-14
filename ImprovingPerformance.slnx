@@ -26,6 +26,7 @@
     <Build Solution="Debug|x86" Project="false" />
   </Project>
   <Project Path="RefReturns/RefReturns.csproj" />
+  <Project Path="StringConcatenation/StringConcatenation.csproj" Id="f381255d-36ad-4157-8da3-b7fe9956366d" />
   <Project Path="UsingAttributes/UsingAttributes.csproj" />
   <Project Path="UsingSpan/UsingSpan.csproj" />
   <Properties Name="Performance">

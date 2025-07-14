@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<NoWarn>$(NoWarn),CA1822</NoWarn>
+		<OutputType>Exe</OutputType>
+		<!--<TargetFramework>net4.8</TargetFramework>-->
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="BenchmarkDotNet" />
+	</ItemGroup>
+</Project>
