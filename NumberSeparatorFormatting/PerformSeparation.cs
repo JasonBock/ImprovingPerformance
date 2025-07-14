@@ -11,6 +11,7 @@ public class PerformSeparation
 	[Arguments("1234567890")]
 	[Arguments("12345678901234567890")]
 	[Arguments("1234567890123456789012345678901234567890")]
+	[Arguments("12345678901234567890123456789012345678901234567890123456789012345678901234567890")]
 	public string AddSeparatorsNoSpans(string numberFormat) =>
 		PerformSeparation.SeparateCharactersNoSpan(numberFormat, 3, true);
 
@@ -18,6 +19,7 @@ public class PerformSeparation
 	[Arguments("1234567890")]
 	[Arguments("12345678901234567890")]
 	[Arguments("1234567890123456789012345678901234567890")]
+	[Arguments("12345678901234567890123456789012345678901234567890123456789012345678901234567890")]
 	public string AddSeparatorsSpansNoStackallock(string numberFormat) =>
 		PerformSeparation.SeparateCharactersSpanNoStackallock(numberFormat, 3, true);
 
@@ -25,6 +27,7 @@ public class PerformSeparation
 	[Arguments("1234567890")]
 	[Arguments("12345678901234567890")]
 	[Arguments("1234567890123456789012345678901234567890")]
+	[Arguments("12345678901234567890123456789012345678901234567890123456789012345678901234567890")]
 	public string AddSeparatorsSpansStackallock(string numberFormat) =>
 		PerformSeparation.SeparateCharactersSpanStackallock(numberFormat, 3, true);
 
