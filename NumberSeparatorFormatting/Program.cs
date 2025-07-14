@@ -1,6 +1,9 @@
 ﻿using BenchmarkDotNet.Running;
 using NumberSeparatorFormatting;
 
+var x = "a,b,c";
+var items = x.Split(',');
+
 BenchmarkRunner.Run<PerformSeparation>();
 
 //var perform = new PerformSeparation();

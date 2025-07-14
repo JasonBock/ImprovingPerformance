@@ -1,0 +1,1 @@
+﻿global using FastCast = System.Runtime.CompilerServices.Unsafe;
